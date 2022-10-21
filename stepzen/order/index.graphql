@@ -20,8 +20,14 @@ type OrderList {
 }
 
 type Query {
+  getOrdersById(id: ID!): Order
+    @rest(
+      endpoint: "https://ups-clone-react-native-4da71-default-rtdb.firebaseio.com/orders/$id.json"
+    )
+
   getOrders: [OrderList]
     @rest(
       endpoint: "https://ups-clone-react-native-4da71-default-rtdb.firebaseio.com/orders.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray" }]
     )
 }
