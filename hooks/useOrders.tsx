@@ -8,18 +8,17 @@ export const useOrders = () => {
 
   useEffect(() => {
     if (!data) return;
-    const orders: Order[] = data
-      .getOrders()
-      .map(({ value }: OrderResponse) => ({
-        carrier: value.carrier,
-        createdAt: value.createdAt,
-        shippingCost: value.shippingCost,
-        trackingItems: value.trackingItems,
-        Address: value.Address,
-        City: value.City,
-        Lat: value.Lat,
-        Lng: value.Lng,
-      }));
+    const orders: Order[] = data.getOrders.map(({ value }: OrderResponse) => ({
+      carrier: value.carrier,
+      createdAt: value.createdAt,
+      shippingCost: value.shippingCost,
+      trackingItems: value.trackingItems,
+      trackingId: value.trackingId,
+      Address: value.Address,
+      City: value.City,
+      Lat: value.Lat,
+      Lng: value.Lng,
+    }));
     setOrders(orders);
   }, [data]);
 
